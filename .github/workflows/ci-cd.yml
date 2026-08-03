@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  build-and-deploy:
+  build-and-validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
@@ -22,8 +22,5 @@ jobs:
       - name: Validar sintaxis
         run: node -c src/index.js
 
-      - name: Deploy a Railway
-        uses: bervProject/railway-deploy@main
-        with:
-          railway_token: ${{ secrets.RAILWAY_TOKEN }}
-          service: api-devops
+      - name: Confirmar build listo para Railway
+        run: echo "✅ Validación completa. Railway desplegará automáticamente este push."
