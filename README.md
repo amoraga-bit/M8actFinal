@@ -33,6 +33,29 @@ npm run dev
 - `GET /tasks` — listar tareas
 - `POST /tasks` — crear tarea `{ "title": "string" }`
 
+## 🌐 API en producción
+
+**URL base:** https://actfinalm8-production.up.railway.app
+
+### Prueba rápida (GET, funciona directo en el navegador)
+
+- Endpoint de prueba: https://actfinalm8-production.up.railway.app/
+- Estado de salud (monitoreo): https://actfinalm8-production.up.railway.app/health
+- Listar tareas: https://actfinalm8-production.up.railway.app/tasks
+
+### Crear una tarea (POST)
+
+\`\`\`bash
+curl -X POST https://actfinalm8-production.up.railway.app/tasks \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Nueva tarea de prueba"}'
+\`\`\`
+
+O con HTTPie:
+\`\`\`bash
+http POST https://actfinalm8-production.up.railway.app/tasks title="Nueva tarea de prueba"
+\`\`\`
+
 ## Base de datos
 PostgreSQL gestionado en [Neon](https://neon.tech).
 
