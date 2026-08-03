@@ -1,0 +1,29 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Validar sintaxis
+        run: node -c src/index.js
+
+      - name: Deploy a Railway
+        uses: bervProject/railway-deploy@main
+        with:
+          railway_token: ${{ secrets.704a309b-432a-4d98-be7f-e38f4bcf6724 }}
+          service: api-devops
